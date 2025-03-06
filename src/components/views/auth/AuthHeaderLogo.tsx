@@ -13,11 +13,11 @@ import SdkConfig from "../../../SdkConfig";
 export default class AuthHeaderLogo extends React.PureComponent {
     public render(): React.ReactElement {
         const brandingConfig = SdkConfig.getObject("branding");
-        const logoUrl = brandingConfig?.get("auth_header_logo_url") ?? "themes/element/img/logos/element-logo.svg";
+        const logoAFMUrl = brandingConfig?.get("auth_header_logo_url") ?? "themes/element/img/logos/logo-AFM.png";
 
         return (
             <aside className="mx_AuthHeaderLogo">
-                <img src={logoUrl} alt="Element" />
+                <img src={logoAFMUrl} alt="AFM" style={{ width: '200px', marginLeft: '-47px', borderRadius: '18px', marginTop: '50px'}}/>
             </aside>
         );
     }

@@ -13,7 +13,7 @@ import { AuthHeaderContext } from "./AuthHeaderContext";
 interface Props {
     title: ReactNode;
     icon?: ReactNode;
-    serverPicker: ReactNode;
+    // serverPicker: ReactNode;
 }
 
 export function AuthHeaderDisplay({ title, icon, serverPicker, children }: PropsWithChildren<Props>): JSX.Element {
@@ -27,7 +27,7 @@ export function AuthHeaderDisplay({ title, icon, serverPicker, children }: Props
             {current?.icon ?? icon}
             <h1>{current?.title ?? title}</h1>
             {children}
-            {current?.hideServerPicker !== true && serverPicker}
+            {/* {current?.hideServerPicker !== true && serverPicker} */}
         </Fragment>
     );
 }

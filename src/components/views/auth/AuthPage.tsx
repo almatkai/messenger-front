@@ -8,20 +8,18 @@ Please see LICENSE files in the repository root for full details.
 */
 
 import React from "react";
-
 import SdkConfig from "../../../SdkConfig";
-import AuthFooter from "./AuthFooter";
 
 export default class AuthPage extends React.PureComponent<React.PropsWithChildren> {
     private static welcomeBackgroundUrl?: string;
-
-    // cache the url as a static to prevent it changing without refreshing
-    private static getWelcomeBackgroundUrl(): string {
-        if (AuthPage.welcomeBackgroundUrl) return AuthPage.welcomeBackgroundUrl;
-
+    
+    // Modified to handle both video and image URLs
+    private static getWelcomeBackgroundUrl(): { url: string; isVideo: boolean } {
+        if (AuthPage.welcomeBackgroundUrl) return { url: AuthPage.welcomeBackgroundUrl, isVideo: AuthPage.welcomeBackgroundUrl.endsWith('.mp4') };
+        
         const brandingConfig = SdkConfig.getObject("branding");
-        AuthPage.welcomeBackgroundUrl = "themes/element/img/backgrounds/lake.jpg";
-
+        AuthPage.welcomeBackgroundUrl = "themes/element/video/background_video.mp4";
+        
         const configuredUrl = brandingConfig?.get("welcome_background_url");
         if (configuredUrl) {
             if (Array.isArray(configuredUrl)) {
@@ -31,13 +29,19 @@ export default class AuthPage extends React.PureComponent<React.PropsWithChildre
                 AuthPage.welcomeBackgroundUrl = configuredUrl;
             }
         }
-
-        return AuthPage.welcomeBackgroundUrl;
+        
+        return {
+            url: AuthPage.welcomeBackgroundUrl,
+            isVideo: AuthPage.welcomeBackgroundUrl.endsWith('.mp4')
+        };
     }
 
     public render(): React.ReactElement {
+        const background = AuthPage.getWelcomeBackgroundUrl();
+        
         const pageStyle = {
-            background: `center/cover fixed url(${AuthPage.getWelcomeBackgroundUrl()})`,
+            // Remove background style as we'll use a video element
+            position: 'relative' as const,
         };
 
         const modalStyle: React.CSSProperties = {
@@ -52,7 +56,7 @@ export default class AuthPage extends React.PureComponent<React.PropsWithChildre
             bottom: 0,
             left: 0,
             filter: "blur(40px)",
-            background: pageStyle.background,
+            background: background.isVideo ? undefined : `center/cover fixed url(${background.url})`,
         };
 
         const modalContentStyle: React.CSSProperties = {
@@ -64,13 +68,23 @@ export default class AuthPage extends React.PureComponent<React.PropsWithChildre
 
         return (
             <div className="mx_AuthPage" style={pageStyle}>
+                {background.isVideo ? (
+                    <video
+                        className="mx_AuthPage_videoBackground"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    >
+                        <source src={background.url} type="video/mp4" />
+                    </video>
+                ) : null}
                 <div className="mx_AuthPage_modal" style={modalStyle}>
                     <div className="mx_AuthPage_modalBlur" style={blurStyle} />
                     <div className="mx_AuthPage_modalContent" style={modalContentStyle}>
                         {this.props.children}
                     </div>
                 </div>
-                <AuthFooter />
             </div>
         );
     }

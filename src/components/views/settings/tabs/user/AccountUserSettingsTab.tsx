@@ -24,7 +24,7 @@ import SettingsTab from "../SettingsTab";
 import { SettingsSection } from "../../shared/SettingsSection";
 import { SettingsSubsection, SettingsSubsectionText } from "../../shared/SettingsSubsection";
 import { SDKContext } from "../../../../../contexts/SDKContext";
-import { UserPersonalInfoSettings } from "../../UserPersonalInfoSettings";
+// import { UserPersonalInfoSettings } from "../../UserPersonalInfoSettings";
 import { useMatrixClientContext } from "../../../../../contexts/MatrixClientContext";
 
 interface IProps {
@@ -186,9 +186,9 @@ const AccountUserSettingsTab: React.FC<IProps> = ({ closeSettingsFn }) => {
                     canSetDisplayName={canSetDisplayName}
                     canSetAvatar={canSetAvatar}
                 />
-                {(!isAccountManagedExternally || canMake3pidChanges) && (
+                {/* {(!isAccountManagedExternally || canMake3pidChanges) && (
                     <UserPersonalInfoSettings canMake3pidChanges={canMake3pidChanges} />
-                )}
+                )} */}
                 <AccountSection
                     canChangePassword={canChangePassword}
                     onPasswordChanged={onPasswordChanged}
