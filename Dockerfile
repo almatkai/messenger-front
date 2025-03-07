@@ -22,7 +22,7 @@ RUN cp /src/config.sample.json /src/webapp/config.json
 FROM nginx:alpine-slim
 
 # Install jq and moreutils for sponge, both used by our entrypoints
-RUN apk add jq moreutils
+# RUN apk add jq moreutils
 
 COPY --from=builder /src/webapp /app
 

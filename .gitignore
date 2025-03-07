@@ -13,6 +13,7 @@ package-lock.json
 electron/dist
 electron/pub
 **/.idea
+/config/
 /config.json
 /config.json.*
 /config.local*.json
