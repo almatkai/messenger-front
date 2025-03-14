@@ -1,4 +1,9 @@
-This repository is forked from [element-web](https://github.com/element-hq/element-web). Rest of the readme was written by element-web developers.
+# Messenger Front
+
+[![Fork of Element Web](https://img.shields.io/badge/Fork%20of-Element%20Web-blue)](https://github.com/element-hq/element-web)
+[![Version](https://img.shields.io/badge/Version-v1.11.95-green)](https://github.com/element-hq/element-web/releases/tag/v1.11.95)
+
+This repository is a customized fork of [Element Web](https://github.com/element-hq/element-web), a secure chat and collaboration platform. The content below was authored by the Element Web development team.
 
 [![Chat](https://img.shields.io/matrix/element-web:matrix.org?logo=matrix)](https://matrix.to/#/#element-web:matrix.org)
 ![Tests](https://github.com/element-hq/element-web/actions/workflows/tests.yaml/badge.svg)
@@ -8,6 +13,7 @@ This repository is forked from [element-web](https://github.com/element-hq/eleme
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=element-web&metric=coverage)](https://sonarcloud.io/summary/new_code?id=element-web)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=element-web&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=element-web)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=element-web&metric=bugs)](https://sonarcloud.io/summary/new_code?id=element-web)
+
 
 # Element
 
