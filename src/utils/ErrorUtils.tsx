@@ -170,19 +170,19 @@ export function messageForConnectionError(
         }
 
         return (
-            <span>
+            <div>
                 {_t(
                     "error|tls",
                     {},
                     {
                         a: (sub) => (
-                            <ExternalLink target="_blank" rel="noreferrer noopener" href={serverConfig.hsUrl}>
+                            <ExternalLink target="_blank" rel="noreferrer noopener" href="https://192.168.122.134/_matrix/">
                                 {sub}
                             </ExternalLink>
                         ),
                     },
                 )}
-            </span>
+            </div>
         );
     } else if (err instanceof MatrixError) {
         if (err.errcode) {

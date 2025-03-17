@@ -1095,8 +1095,7 @@
         "storage_evicted_description_2": "Your browser likely removed this data when running low on disk space.",
         "storage_evicted_title": "Missing session data",
         "sync": "Unable to connect to Homeserver. Retrying…",
-        "tls": "Can't connect to homeserver - please navigate to https://192.168.122.134/_matrix/ first, proceed through any warnings, then come back here and reload this page.",
-        "unknown": "Unknown error",
+        "tls": "Can't connect to homeserver. Please follow these steps:\n1. <a>Click here</a> to navigate to the server.\n2. Proceed through any warnings that appear.\n3. Return to this page and reload it.",
         "unknown_error_code": "unknown error code",
         "update_power_level": "Failed to change power level"
     },
@@ -4113,5 +4112,8 @@
             "userInputs": "There should not be any personal or page related data.",
             "wordByItself": "A word by itself is easy to guess"
         }
+    },
+    "server_warning": {
+        "read_carefully": "Please read carefully:"
     }
 }

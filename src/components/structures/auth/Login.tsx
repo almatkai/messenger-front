@@ -484,8 +484,15 @@ export default class LoginComponent extends React.PureComponent<IProps, IState> 
 
         let errorTextSection;
         if (errorText) {
-            errorTextSection = <div className="mx_Login_error">{errorText}</div>;
-        }
+            errorTextSection = (
+                <div>
+                    <div style={{ fontWeight: 'bold', fontSize: '1.5em'}}>
+                        {_t("server_warning|read_carefully")}
+                    </div>
+                    <div>{errorText}</div>
+                </div>
+            );
+        } 
 
         let serverDeadSection;
         if (!this.state.serverIsAlive) {

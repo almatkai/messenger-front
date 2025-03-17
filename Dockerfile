@@ -1,7 +1,12 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs
 
+# Set version labels
+ARG VERSION=1.0.0
+ARG BUILD_DATE
+ARG VCS_REF
+
 # Builder
-FROM --platform=$BUILDPLATFORM node:22-bullseye AS builder
+FROM --platform=$BUILDPLATFORM node:22.7-bullseye AS builder
 
 # Support custom branch of the js-sdk. This also helps us build images of element-web develop.
 ARG USE_CUSTOM_SDKS=false
@@ -19,10 +24,20 @@ RUN /src/scripts/docker-package.sh
 RUN cp /src/config.sample.json /src/webapp/config.json
 
 # App
-FROM nginx:alpine-slim
+FROM nginx:1.25-alpine-slim
+
+# Add metadata labels
+LABEL org.opencontainers.image.version="${VERSION}" \
+      org.opencontainers.image.created="${BUILD_DATE}" \
+      org.opencontainers.image.revision="${VCS_REF}" \
+      org.opencontainers.image.title="Element Web" \
+      org.opencontainers.image.description="A glossy Matrix collaboration client for the web." \
+      org.opencontainers.image.url="https://element.io" \
+      org.opencontainers.image.documentation="https://github.com/element-hq/element-web/blob/develop/docs/install.md" \
+      org.opencontainers.image.source="https://github.com/element-hq/element-web"
 
 # Install jq and moreutils for sponge, both used by our entrypoints
-RUN apk add jq moreutils
+# RUN apk add jq moreutils
 
 COPY --from=builder /src/webapp /app
 
